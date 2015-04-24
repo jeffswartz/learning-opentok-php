@@ -90,8 +90,7 @@ $app->post('/start/:sessionId', 'cors', function ($sessionId) use ($app) {
     $archive = $app->opentok->startArchive($sessionId, 'Getting Started Sample Archive');
     $app->response->headers->set('Content-Type', 'application/json');
 
-    $responseData = array('archive' => $archive);
-    echo json_encode($responseData);
+    echo $archive->toJson();
 });
 
 // Stop Archiving and return the Archive ID
@@ -99,8 +98,7 @@ $app->post('/stop/:archiveId', 'cors', function ($archiveId) use ($app) {
     $archive = $app->opentok->stopArchive($archiveId);
     $app->response->headers->set('Content-Type', 'application/json');
 
-    $responseData = array('archive' => $archive);
-    echo json_encode($responseData);
+    echo $archive->toJson();
 });
 
 
